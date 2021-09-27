@@ -504,6 +504,16 @@ console.log(removeIndex(6))
   ***
 */
 
+const halfTree = function (height) {
+    let treeRow = ''
+    for (let i = 0; i < height; i++) {
+        treeRow += '*'
+        console.log(treeRow)
+    }
+}
+
+halfTree(5)
+
 /* EXERCISE 22
   Create a function called "tree" which receives a number as a parameter and builds an "*" tree with the given height.
   Example:
@@ -513,9 +523,35 @@ console.log(removeIndex(6))
   *****
 */
 
+const tree = function (num) {
+    let tree = [' * ']
+    console.log(tree.join(''))
+    for (let i = 0; i < num; i++) {
+        tree[i] = ' '
+        tree[i + 1] = '*'
+        tree.push('**')
+        console.log(tree.join(''))
+    }
+}
+
+tree(3)
+
 /* EXERCISE 23
   Create a function called "isItPrime" that receives a number as a parameter and returns true if the given number is a prime number.
 */
+
+const isItPrime = function (num) {
+    if (num > 1) {
+        for (let i = 2; i < num; i++) {
+            if (num % i === 0) {
+                return false
+            }
+        }
+        return true
+    }
+}
+
+console.log(isItPrime(2))
 
 /* WHEN YOU ARE FINISHED
  Commit and push the code to your personal GitHub repository; then post the link of your commit on the Homework section of today's Eduflow.
