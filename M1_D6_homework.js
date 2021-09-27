@@ -447,6 +447,18 @@ console.log(sumAllTheYears())
     Write a function called searchByTitle which receives a string as a parameter and returns all the movies in the provided movies array which contain that string in the title.
 */
 
+const searchByTitle = function (queryStr) {
+    let arrayOfPossibleMovies = []
+    for (i = 0; i < movies.length; i++) {
+        if (movies[i].Title.toLowerCase().includes(queryStr.toLowerCase())) {
+            arrayOfPossibleMovies.push(movies[i])
+        }
+    }
+    return arrayOfPossibleMovies
+}
+
+console.log(searchByTitle('avengers'))
+
 /* EXERCISE 19
     Write a function called searchAndDivide which receives a string as a parameter and returns an object;
     this object should contain an array called match, made by all the movies from the provided movies array which contain the given string in the title,
