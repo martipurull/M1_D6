@@ -524,13 +524,11 @@ halfTree(5)
 */
 
 const tree = function (num) {
-    let tree = [' * ']
-    console.log(tree.join(''))
+    let tree = ''
+    console.log(tree)
     for (let i = 0; i < num; i++) {
-        tree[i] = ' '
-        tree[i + 1] = '*'
-        tree.push('**')
-        console.log(tree.join(''))
+
+        console.log(tree)
     }
 }
 
