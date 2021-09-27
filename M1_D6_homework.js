@@ -27,7 +27,7 @@ let sum = 10 + 20
     Create a variable called random and assign to it a random number between 0 and 20 (it should be randomly created at each execution).
 */
 
-let random = Math.floor(Math.random() * 20)
+let random = Math.floor(Math.random() * 21)
 
 console.log(random)
 
@@ -35,49 +35,137 @@ console.log(random)
     Create a variable called me and assign to it an object containing the following information: name = your name, surname = your surname, age = your age.
 */
 
+let me = {
+    name: 'Marti',
+    surname: 'Purull',
+    age: 35
+}
+
+console.log(me)
+
 /* EXERCISE E
     Write a piece of code for programmatically removing the age property from the previously create object.
 */
+
+delete me.age
+
+console.log(me)
 
 /* EXERCISE F
    Write a piece of code for programmatically adding to the me object you defined before an array called skills, containing the programming languages you know right now.
 */
 
+me.skills = ['JavaScript', 'Python (basic)']
+
+console.log(me)
+
 /* EXERCISE G
    Write a piece of code for programmatically removing the last skill from the skills array inside the me object.
 */
+
+me.skills.pop()
+
+console.log(me)
 
 // JS Functions
 /* EXERCISE 1
     Write a function called dice; it should randomize an integer number between 1 and 6.
 */
 
+const dice = function () {
+    let diceResult = Math.floor(Math.random() * 6 + 1)
+    return diceResult
+}
+
+console.log(dice())
+
 /* EXERCISE 2
     Write a function called whoIsBigger which receives 2 numbers as parameters and returns the biggest one.
 */
+
+const whoIsBigger = function (num1, num2) {
+    if (num1 === num2) {
+        console.log('The numbers are equal.')
+    } else {
+        let bigger = (num1 > num2) ? num1 : num2
+        console.log(`${ bigger } is the bigger number.`)
+    }
+}
+
+whoIsBigger(2, 4)
 
 /* EXERCISE 3
     Write a function called splitMe which receives a string as a parameter and returns an array with every word in that string.
     Ex.: splitMe("I love coding") => returns ["I", "Love", "Coding"]
 */
 
+const splitMe = function (str) {
+    let returnedArray = str.split(' ')
+    console.log(returnedArray)
+}
+
+splitMe('I love coding')
+
 /* EXERCISE 4
     Write a function called deleteOne which receives a string and a boolean as parameters.
     If the boolean value is true it should return the string without the first letter, otherwise it should remove the last one from it.
 */
+
+const deleteOne = function (str, bool) {
+    if (bool === true) {
+        console.log(str.slice(1))
+    } else {
+        console.log(str.slice(0, -1))
+    }
+}
+
+deleteOne('brandy', false)
 
 /* EXERCISE 5
    Write a function called onlyLetters which receives a string as a parameter and returns it removing all the digits.
    Ex.: onlyLetters("I have 4 dogs") => returns "I have  dogs"
 */
 
+const onlyLetters = function (str) {
+    let arrayOfStringElements = str.split('')
+    for (let i = 0; i < arrayOfStringElements.length; i++) {
+        if (!isNaN(arrayOfStringElements[i])) {
+            arrayOfStringElements[i] = ' '
+        }
+    }
+    console.log(arrayOfStringElements.join(''))
+}
+
+onlyLetters('I have 15 cats')
+
 /* EXERCISE 6
    Write a function called isThisAnEmail which receives a string as a parameter and returns true if the string is a valid email address.
 */
 
+const isThisAnEmail = function (str) {
+    let splitStr = str.split('')
+    let at = '@'
+    let dot = '.'
+    if (splitStr.includes(at) && splitStr.includes(dot)) {
+        return true
+    } else {
+        return `${ str } is not a valid email address.`
+    }
+}
+
+console.log(isThisAnEmail('marti@gmail.com'))
+
 /* EXERCISE 7
    Write a function called whatDayIsIt that should return the current day of the week.
 */
+
+const whatDayIsIt = function () {
+    let currentDate = new Date
+    let options = { weekday: 'long' }
+    console.log(`Today is ${ new Intl.DateTimeFormat('en-UK', options).format(currentDate) }`)
+}
+
+whatDayIsIt()
 
 /* EXERCISE 8
     Write a function called rollTheDices which receives a number as a parameter.
@@ -90,13 +178,46 @@ console.log(random)
     }
 */
 
+const rollTheDice = function (diceNum) {
+    let diceSum = 0
+    let diceArray = []
+    for (let i = 0; i < diceNum; i++) {
+        let diceResult = dice()
+        diceSum += diceResult
+        diceArray.push(diceResult)
+    } console.log(`sum: ${ diceSum },\nvalues: ${ diceArray }`)
+}
+
+rollTheDice(3)
+
 /* EXERCISE 9
    Write a function called howManyDays which receives a date as a parameter and returns the number of days passed since that date.
 */
 
+const howManyDays = function (receivedDate) {
+    let currentDate = Date.now()
+    let receivedDateInMs = Date.parse(receivedDate)
+    let daysPassed = Math.floor((currentDate - receivedDateInMs) / (1000 * 60 * 60 * 24))
+    console.log(`${ daysPassed } days have passed since specified date.`)
+}
+
+howManyDays('25 Sep 2021')
+
 /* EXERCISE 10
    Write a function called isTodayMyBirthday which should return true if today's your birthday, false otherwise.
 */
+
+const isTodayMyBirthday = function () {
+    let todaysDate = new Date()
+    let todaysDay = todaysDate.getDate()
+    let todaysMonth = todaysDate.getMonth()
+    let myBirthday = new Date('May 11, 1986 00:00:00')
+    let birthdayDay = myBirthday.getDate()
+    let birthdayMonth = myBirthday.getMonth()
+    return todaysDay === birthdayDay && todaysMonth === birthdayMonth ? true : false
+}
+
+console.log(isTodayMyBirthday())
 
 // JS Arrays & Objects
 // NOTE: the movies array used in some exercises is defined at the end of this file
