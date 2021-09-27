@@ -465,6 +465,23 @@ console.log(searchByTitle('avengers'))
     and another array unmatch with all the remaining ones.
 */
 
+const searchAndDivide = function (receivedStr) {
+    let objToReturn = {
+        match: [],
+        umatch: []
+    }
+    for (let i = 0; i < movies.length; i++) {
+        if (movies[i].Title.toLowerCase().includes(receivedStr.toLowerCase())) {
+            objToReturn.match.push(movies[i])
+        } else {
+            objToReturn.umatch.push(movies[i])
+        }
+    }
+    return objToReturn
+}
+
+console.log(searchAndDivide('flies'))
+
 /* EXERCISE 20
    Write a function called "removeIndex" which receives a number as a parameter and returns the provided movies array without the element in the given position.
 */
