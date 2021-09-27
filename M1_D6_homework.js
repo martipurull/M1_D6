@@ -523,14 +523,12 @@ halfTree(5)
   *****
 */
 
-const tree = function (num) {
-    let tree = '*'
-    console.log(tree)
-    for (let i = 0; i < num; i++) {
-        tree += '**'
-        console.log(tree)
+const tree = function (height) {
+    for (let i = 0; i < height; i++) {
+        let stars = '*'.repeat(2 * i + 1)
+        let spacesBefore = ' '.repeat(height - i - 1)
+        console.log(spacesBefore + stars)
     }
-
 }
 
 tree(3)
